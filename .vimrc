@@ -24,6 +24,8 @@ Plugin 'majutsushi/tagbar'          	" Class/module browser
 
 "------------------=== Other ===----------------------
 Plugin 'bling/vim-airline'   	    	" Lean & mean status/tabline for vim
+"Plugin 'vim-airline/vim-airline-themes'
+Plugin 'tpope/vim-fugitive'
 Plugin 'fisadev/FixedTaskList.vim'  	" Pending tasks list
 Plugin 'rosenfeld/conque-term'      	" Consoles as buffers
 Plugin 'tpope/vim-surround'	   	" Parentheses, brackets, quotes, XML tags, and more
@@ -36,7 +38,7 @@ Plugin 'honza/vim-snippets'		" snippets repo
 
 "---------------=== Languages support ===-------------
 " --- Python ---
-Plugin 'klen/python-mode'	        " Python mode (docs, refactor, lints, highlighting, run and ipdb and more)
+"Plugin 'klen/python-mode'	        " Python mode (docs, refactor, lints, highlighting, run and ipdb and more)
 Plugin 'davidhalter/jedi-vim' 		" Jedi-vim autocomplete plugin
 Plugin 'mitsuhiko/vim-jinja'		" Jinja support for vim
 Plugin 'mitsuhiko/vim-python-combined'  " Combined Python 2/3 for Vim
@@ -90,10 +92,11 @@ let g:snippets_dir = "~/.vim/vim-snippets/snippets"
 "
 " настройки Vim-Airline
 set laststatus=2
-let g:airline_theme='badwolf'
-let g:airline_powerline_fonts = 1
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#formatter = 'unique_tail'
+let g:airline_theme='dark'
+let g:airline_powerline_fonts=1
+let g:airline#extensions#tabline#enabled=1
+"let g:airline#extensions#tabline#formatter='unique_tail'
+let g:airline_detect_modified=1
 
 " TagBar настройки
 map <F4> :TagbarToggle<CR>
