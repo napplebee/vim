@@ -1,10 +1,14 @@
 set t_Co=256
 set bg=dark
 colorscheme desert256
+"colorscheme solarized
+"let g:solarized_termcolors=256
 "Vundle section start
 
 set nocompatible              " be iMproved, required
 filetype off                  " required
+
+autocmd BufNewFile,BufRead *.inc  set syntax=htmlcheetah
 
 "=====================================================
 " Vundle settings
@@ -20,13 +24,14 @@ Plugin 'mhinz/vim-startify'
 
 "---------=== Code/project navigation ===-------------
 Plugin 'scrooloose/nerdtree' 	    	" Project and file navigation
+Plugin 'scrooloose/nerdcommenter'
 Plugin 'majutsushi/tagbar'          	" Class/module browser
+Plugin 'ctrlpvim/ctrlp.vim'
 
 "------------------=== Other ===----------------------
 Plugin 'bling/vim-airline'   	    	" Lean & mean status/tabline for vim
 "Plugin 'vim-airline/vim-airline-themes'
 Plugin 'tpope/vim-fugitive'
-Plugin 'fisadev/FixedTaskList.vim'  	" Pending tasks list
 Plugin 'rosenfeld/conque-term'      	" Consoles as buffers
 Plugin 'tpope/vim-surround'	   	" Parentheses, brackets, quotes, XML tags, and more
 
@@ -36,13 +41,10 @@ Plugin 'MarcWeber/vim-addon-mw-utils'	" dependencies #1
 Plugin 'tomtom/tlib_vim'		" dependencies #2
 Plugin 'honza/vim-snippets'		" snippets repo
 
-"---------------=== Languages support ===-------------
-" --- Python ---
-"Plugin 'klen/python-mode'	        " Python mode (docs, refactor, lints, highlighting, run and ipdb and more)
-Plugin 'davidhalter/jedi-vim' 		" Jedi-vim autocomplete plugin
-Plugin 'mitsuhiko/vim-jinja'		" Jinja support for vim
-Plugin 'mitsuhiko/vim-python-combined'  " Combined Python 2/3 for Vim
+"---=== Perl specific plugins ===---
+Plugin 'vim-perl/vim-perl'
 
+"---------------=== Languages support ===-------------
 call vundle#end()            		" required
 filetype on
 filetype plugin on
@@ -53,6 +55,8 @@ filetype plugin indent on
 let g:startify_bookmarks = ['~/.vimrc',]
 let g:startify_custom_header = map(split(system('fortune ~/.vim/fortune/vimtips | cowsay -W 60'), '\n'), '"   ". v:val') + ['','']
 let g:startify_session_persistence = 1
+let g:startify_change_to_dir = 0
+let g:startify_change_to_vcs_root = 1
 "end of starting page
 
 syntax on
@@ -64,8 +68,6 @@ set number "if you want to see all lines numbered
 
 "==== settings from habrahabr
 set backspace=indent,eol,start
-aunmenu Help.
-aunmenu Window.
 let no_buffers_menu=1
 set mousemodel=popup
 
@@ -99,19 +101,24 @@ let g:airline#extensions#tabline#enabled=1
 let g:airline_detect_modified=1
 
 " TagBar настройки
-map <F4> :TagbarToggle<CR>
 let g:tagbar_autofocus = 0 " автофокус на Tagbar при открытии
 
 "NerdTree настройки
-" показать NERDTree на F3
-map <F3> :NERDTreeToggle<CR>
 "игноррируемые файлы с расширениями
-let NERDTreeIgnore=['\~$', '\.pyc$', '\.pyo$', '\.class$', 'pip-log\.txt$', '\.o$']  
+let NERDTreeIgnore=['\.swp$', '\~$', '\.pyc$', '\.pyo$', '\.class$', 'pip-log\.txt$', '\.o$']  
 
-" TaskList настройки
-map <F2> :TaskList<CR> 	   " отобразить список тасков на F2
+
+" === Keybindings ===
+map <F3> :TagbarToggle<CR>
+map <F2> :NERDTreeToggle<CR>
 
 " Работа буфферами
-map <C-q> :bd<CR> 	   " CTRL+Q - закрыть текущий буффер
+map <C-x> :bd<CR> 	   
+map <M-x> :bd<CR> 	   
 
-"==== setting from habrahabr
+nmap SQ <ESC>:mksession! ~/.vim/sessions/Session.vim<CR>:wqa<CR>
+nmap SS <ESC>:mksession! ~/.vim/sessions/Session.vim<CR>
+nmap SL <ESC>:source ~/.vim/sessions/Session.vim<CR>
+nmap CS <ESC>:nohl<CR> 
+set cursorline
+hi CursorLine   cterm=NONE ctermbg=236 ctermfg=NONE
