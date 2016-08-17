@@ -20,13 +20,14 @@ Plugin 'mhinz/vim-startify'
 
 "---------=== Code/project navigation ===-------------
 Plugin 'scrooloose/nerdtree' 	    	" Project and file navigation
+Plugin 'scrooloose/nerdcommenter'
 Plugin 'majutsushi/tagbar'          	" Class/module browser
+Plugin 'ctrlpvim/ctrlp.vim'
 
 "------------------=== Other ===----------------------
 Plugin 'bling/vim-airline'   	    	" Lean & mean status/tabline for vim
 "Plugin 'vim-airline/vim-airline-themes'
 Plugin 'tpope/vim-fugitive'
-Plugin 'fisadev/FixedTaskList.vim'  	" Pending tasks list
 Plugin 'rosenfeld/conque-term'      	" Consoles as buffers
 Plugin 'tpope/vim-surround'	   	" Parentheses, brackets, quotes, XML tags, and more
 
@@ -36,13 +37,10 @@ Plugin 'MarcWeber/vim-addon-mw-utils'	" dependencies #1
 Plugin 'tomtom/tlib_vim'		" dependencies #2
 Plugin 'honza/vim-snippets'		" snippets repo
 
-"---------------=== Languages support ===-------------
-" --- Python ---
-"Plugin 'klen/python-mode'	        " Python mode (docs, refactor, lints, highlighting, run and ipdb and more)
-Plugin 'davidhalter/jedi-vim' 		" Jedi-vim autocomplete plugin
-Plugin 'mitsuhiko/vim-jinja'		" Jinja support for vim
-Plugin 'mitsuhiko/vim-python-combined'  " Combined Python 2/3 for Vim
+"---=== Perl specific plugins ===---
+Plugin 'vim-perl/vim-perl'
 
+"---------------=== Languages support ===-------------
 call vundle#end()            		" required
 filetype on
 filetype plugin on
@@ -99,19 +97,17 @@ let g:airline#extensions#tabline#enabled=1
 let g:airline_detect_modified=1
 
 " TagBar настройки
-map <F4> :TagbarToggle<CR>
+map <F3> :TagbarToggle<CR>
 let g:tagbar_autofocus = 0 " автофокус на Tagbar при открытии
 
 "NerdTree настройки
-" показать NERDTree на F3
-map <F3> :NERDTreeToggle<CR>
+map <F2> :NERDTreeToggle<CR>
 "игноррируемые файлы с расширениями
-let NERDTreeIgnore=['\~$', '\.pyc$', '\.pyo$', '\.class$', 'pip-log\.txt$', '\.o$']  
-
-" TaskList настройки
-map <F2> :TaskList<CR> 	   " отобразить список тасков на F2
+let NERDTreeIgnore=['\.swp$', '\~$', '\.pyc$', '\.pyo$', '\.class$', 'pip-log\.txt$', '\.o$']  
 
 " Работа буфферами
-map <C-q> :bd<CR> 	   " CTRL+Q - закрыть текущий буффер
+map <C-x> :bd<CR> 	   
+map <M-x> :bd<CR> 	   
 
-"==== setting from habrahabr
+set cursorline
+hi CursorLine   cterm=NONE ctermbg=236 ctermfg=NONE
