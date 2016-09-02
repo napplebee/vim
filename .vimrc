@@ -1,14 +1,13 @@
-set t_Co=256
+"set t_Co=256
 set bg=dark
-colorscheme desert256
-"colorscheme solarized
+"colorscheme desert256
+colorscheme desertEx
 "let g:solarized_termcolors=256
 "Vundle section start
 
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
-autocmd BufNewFile,BufRead *.inc  set syntax=htmlcheetah
 
 "=====================================================
 " Vundle settings
@@ -120,5 +119,12 @@ nmap SQ <ESC>:mksession! ~/.vim/sessions/Session.vim<CR>:wqa<CR>
 nmap SS <ESC>:mksession! ~/.vim/sessions/Session.vim<CR>
 nmap SL <ESC>:source ~/.vim/sessions/Session.vim<CR>
 nmap CS <ESC>:nohl<CR> 
+nnoremap <silent> <C-S-Up> <ESC>:resize -2<CR>
+nnoremap <silent> <C-S-Down> <ESC>:resize +2<CR>
+
 set cursorline
 hi CursorLine   cterm=NONE ctermbg=236 ctermfg=NONE
+
+
+autocmd BufNewFile,BufRead *.inc  set syntax=htmlcheetah
+autocmd BufNewFile,BufRead *.tmpl  set syntax=htmlcheetah
