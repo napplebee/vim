@@ -19,7 +19,6 @@ call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 
 Plugin 'scrooloose/nerdcommenter'
-Plugin 'majutsushi/tagbar'
 Plugin 'ctrlpvim/ctrlp.vim'
 
 Plugin 'bling/vim-airline'
